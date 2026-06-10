@@ -38,7 +38,7 @@ const podeExcluirEncomenda = async (id) => {
     if (!encomenda) throw new Error("Encomenda não encontrada");
 
     const agora = new Date();
-    const data = new Date(encomenda.id);
+    const data = new Date(encomenda.createdAt); 
 
     const diff = (agora - data) / (1000 * 60 * 60);
 
