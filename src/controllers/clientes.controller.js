@@ -3,11 +3,13 @@ const prisma = require("../data/prisma");
 const cadastrar = async (req, res) => {
   const data = req.body;
 
-  if (data.senha !== data.confirmarSenha) {
-    return res.json({ erro: "Senhas não coincidem" });
-  }
+  console.log(data);
 
-  delete data.confirmarSenha;
+  // if (data.senha !== data.confirmarSenha) {
+  //   return res.json({ erro: "Senhas não coincidem" });
+  // }
+
+  // delete data.confirmarSenha;
 
   const item = await prisma.clientes.create({ data });
   res.json(item);
