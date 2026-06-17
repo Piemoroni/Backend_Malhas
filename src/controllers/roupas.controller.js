@@ -35,9 +35,24 @@ const atualizar = async (req, res) => {
   res.json(atualizado);
 };
 
+const excluir = async (req, res) => {
+  const item = await prisma.roupas.findUnique({
+    where: { id: Number(req.params.id) }
+  });
+
+  if (!item) return res.json({ erro: "Rouap não encontrada" });
+
+  await prisma.roupas.delete({
+    where: { id: Number(req.params.id) }
+  });
+
+  res.json({ mensagem: "Roupa excluída" });
+};
+
 module.exports = {
   cadastrar,
   listar,
   buscar,
-  atualizar
+  atualizar,
+  excluir
 };
